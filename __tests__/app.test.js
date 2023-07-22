@@ -7,7 +7,7 @@ const agent = request.agent(app);
 
 const fakeUser = {
   name: 'justaname',
-  usernam: 'username1',
+  username: 'username1',
   email: 'weeks@mail.com',
   password: 'fakeword'
 };
@@ -22,6 +22,11 @@ describe('Testing User Routes', () => {
   });
 
   it('Sign Up Test', async () => {
+    const response = await agent.post('/auth/register').send(fakeUser);
 
+    expect(response.statusCode).toBe(200);
+    expect(response.body.email).toBe(fakeUser.email);
+    expect(response.body.name).toBe(fakeUser.name);
+    expect(response.body.username).toBe(fakeUser.username);
   });
 });
