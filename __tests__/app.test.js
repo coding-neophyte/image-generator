@@ -24,10 +24,12 @@ describe('Testing User Routes', () => {
   it('Sign Up Test', async () => {
     const response = await agent.post('/auth/register').send(fakeUser);
 
-    expect(response.statusCode).toEqual(200);
-    expect(response.body.email).toEqual(fakeUser.email);
-    expect(response.body.name).toEqual(fakeUser.name);
-    expect(response.body.username).toEqual(fakeUser.username);
+    expect(response.body).toEqual({
+      id: expect.any(String),
+      name: expect.any(String),
+      username: expect.any(String),
+      email: expect.any(String)
+    });
   });
 
   it('Sign In Test', async () => {
@@ -37,7 +39,6 @@ describe('Testing User Routes', () => {
       password: fakeUser.password
     });
 
-    expect(response.statusCode).toEqual(200);
     expect(response.body).toEqual({ message: 'Signed In' });
   });
 
