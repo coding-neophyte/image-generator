@@ -5,6 +5,13 @@ const app = require('../lib/app');
 
 const agent = request.agent(app);
 
+const fakeUser = {
+  name: 'justaname',
+  usernam: 'username1',
+  email: 'weeks@mail.com',
+  password: 'fakeword'
+};
+
 describe('Testing User Routes', () => {
   beforeEach(() => {
     return setup(pool);
@@ -12,5 +19,9 @@ describe('Testing User Routes', () => {
 
   afterAll(() => {
     pool.end();
+  });
+
+  it('Sign Up Test', async () => {
+
   });
 });

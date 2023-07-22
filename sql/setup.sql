@@ -4,5 +4,6 @@ CREATE TABLE users (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name TEXT NOT NULL,
     username TEXT NOT NULL,
-    passwordHash TEXT NOT NULL
+    email TEXT NOT NULL,
+    password TEXT NOT NULL
 );
