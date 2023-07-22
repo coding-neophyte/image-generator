@@ -14,6 +14,6 @@ CREATE TABLE posts (
     name TEXT NOT NULL,
     prompt TEXT NOT NULL,
     photo TEXT NOT NULL,
-    userId BIGINT NOT NULL,
-    FOREIGN KEY (userId) REFERENCES users(id)
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
 );
