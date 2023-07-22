@@ -29,4 +29,14 @@ describe('Testing User Routes', () => {
     expect(response.body.name).toBe(fakeUser.name);
     expect(response.body.username).toBe(fakeUser.username);
   });
+  it('Sign In Test', async () => {
+    const newUser = await agent.post('/auth/register').send(fakeUser);
+    const response = await agent.post('/auth/signin').send({
+      email: newUser.body.email,
+      password: fakeUser.password
+    });
+
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual({ message: 'Signed In' });
+  });
 });
